@@ -25,9 +25,6 @@
     "lint": "./node_modules/.bin/eslint src --rule \"indent: 2\" --fix",
     "lint:test": "./node_modules/.bin/eslint src"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
