@@ -12,7 +12,8 @@ const Dashboard = ({
     inventoryData,
     getItemsConnect,
     addItemConnect,
-    setByKeyConnect
+    setByKeyConnect,
+    removeItemConnect
 }) => {
 
     const [addTypes, setAddTypes] = useState([]);
@@ -82,6 +83,14 @@ const Dashboard = ({
         }
     };
 
+    const removeItem = (index) => {
+        const newList = data.filter(item => item.index !== index);
+        newList.forEach((item, index) => {
+            item.index = index;
+        });
+        removeItemConnect(newList);
+    };
+
     return (
         <>
             <div className="row">
@@ -114,12 +123,21 @@ const Dashboard = ({
                     const { index, type, fields } = item || {};
                     return (
                         item && (filterType === 'All' || (filterType !== 'All' && type === filterType)) &&
-                        <ItemCard
-                            key={index}
-                            index={index}
-                            type={type}
-                            fields={fields}
-                        />
+                        <>
+                            <div className="row">
+                                <ItemCard
+                                    key={index}
+                                    index={index}
+                                    type={type}
+                                    fields={fields}
+                                />
+                            </div>
+                            <Button
+                                key={`remove_${item}`}
+                                ctaText={`Remove`}
+                                onClick={() => removeItem(index)}
+                            />&nbsp;
+                        </>
                     );
                 })}
             </div>

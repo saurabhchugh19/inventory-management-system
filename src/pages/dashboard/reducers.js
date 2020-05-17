@@ -19,6 +19,11 @@ export const addItem = (state = INITIAL_STATE, { data }) => {
     return { ...state, data: dataList };
 };
 
+export const removeItem = (state = INITIAL_STATE, { data }) => {
+    saveToLocalStorage(ITEMS_LIST, JSON.stringify(data));
+    return { ...state, data };
+};
+
 export const setByKey = (state = INITIAL_STATE, { data }) => {
     const { key, value } = data;
     return { ...state, [key]: value };
@@ -27,6 +32,7 @@ export const setByKey = (state = INITIAL_STATE, { data }) => {
 export const HANDLERS = {
     [Types.GET_ITEMS_SUCCESS]: getItemsSuccess,
     [Types.ADD_ITEM]: addItem,
+    [Types.REMOVE_ITEM]: removeItem,
     [Types.SET_BY_KEY]: setByKey
 
 };

@@ -7,6 +7,8 @@ export default createTypes(
     ADD_ITEM
 
     SET_BY_KEY
+
+    REMOVE_ITEM
 `,
     {
         prefix: "dashboard/"

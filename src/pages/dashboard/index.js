@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Dashboard from "./component";
 import withLayout from "../../components/layout/component";
-import { getItems, addItem, setByKey } from "./actions";
+import { getItems, addItem, setByKey, removeItem } from "./actions";
 
 const mapStateToProps = ({
     manageInventory: { data: inventoryData },
@@ -17,7 +17,8 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     getItemsConnect: getItems,
     addItemConnect: addItem,
-    setByKeyConnect: setByKey
+    setByKeyConnect: setByKey,
+    removeItemConnect: removeItem
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(withLayout(Dashboard));

@@ -17,6 +17,11 @@ const addItem = (data) => ({
     data
 });
 
+const removeItem = (data) => ({
+    type: Types.REMOVE_ITEM,
+    data
+});
+
 const setByKey = (key, value) => ({
     type: Types.SET_BY_KEY,
     data: { key, value }
@@ -25,5 +30,6 @@ const setByKey = (key, value) => ({
 export {
     getItems,
     addItem,
-    setByKey
+    setByKey,
+    removeItem
 };
