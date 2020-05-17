@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Dashboard from "../../pages/dashboard";
+import ManageInventory from "../../pages/manage-inventory";
 
 const RenderRoutes = () => {
     return (
@@ -20,4 +21,14 @@ const routes = [
         exact: true,
         component: Dashboard
     },
+    {
+        path: "/manage-inventory",
+        exact: true,
+        component: ManageInventory
+    },
+    {
+        path: "*",
+        exact: true,
+        component: Dashboard
+    }
 ];
