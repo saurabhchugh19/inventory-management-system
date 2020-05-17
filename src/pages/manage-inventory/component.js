@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Button from "../../components/shared/button";
 import Card from "../../components/shared/card";
+import getUid from "../../helpers/generate-uid";
 
 const ManageInventory = ({
     data,
@@ -19,7 +20,8 @@ const ManageInventory = ({
             index: data.length,
             type: "",
             title: "",
-            fields: []
+            fields: [],
+            route: getUid()
         };
         addInventoryTypeConnect(newType);
     };

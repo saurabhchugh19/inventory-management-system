@@ -2,16 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Header from "./component";
-import { getInventoryTypes } from './actions';
+import { getInventoryTypesData, resetManageInventoryByKey } from '../../pages/manage-inventory/actions';
 
 const mapStateToProps = ({
-    header: { inventoryTypes }
+    manageInventory: { data: inventoryData, isChanged }
 }) => ({
-    inventoryTypes
+    inventoryData,
+    isChanged
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    getInventoryTypesConnect: getInventoryTypes
+    getInventoryTypesDataConnect: getInventoryTypesData,
+    resetManageInventoryByKeyConnect: resetManageInventoryByKey
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

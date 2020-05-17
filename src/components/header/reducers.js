@@ -2,16 +2,15 @@ import { createReducer } from "reduxsauce";
 import Types from "./types";
 
 export const INITIAL_STATE = {
-    inventoryTypes: []
+    quack: null
 };
 
-export const getInventoryTypesSuccess = (state = INITIAL_STATE, { data } ) => {
-    const inventoryTypes = data && data.length ? data : state.inventoryTypes;
-    return { ...state, inventoryTypes };
+export const quack = (state = INITIAL_STATE) => {
+    return { ...state, isLoading: true};
 };
 
 export const HANDLERS = {
-    [Types.GET_INVENTORY_TYPES_SUCCESS]: getInventoryTypesSuccess,
+    [Types.QUACK]: quack
 
 };
 

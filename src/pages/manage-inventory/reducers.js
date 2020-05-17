@@ -4,7 +4,8 @@ import saveToLocalStorage from "../../helpers/save-to-local-storage";
 import { INVENTORY_TYPES_DATA } from "../../components/constants/app-constants";
 
 export const INITIAL_STATE = {
-    data: []
+    data: [],
+    isChanged: false
 };
 
 export const getInventoryTypesDataSuccess = (state = INITIAL_STATE, { data } ) => {
@@ -20,13 +21,19 @@ export const addInventoryType = (state = INITIAL_STATE, { data }) => {
 
 export const updateInventoryType = (state = INITIAL_STATE, { data }) => {
     saveToLocalStorage(INVENTORY_TYPES_DATA, JSON.stringify(data));
-    return { ...state, data };
+    return { ...state, data, isChanged: true };
+};
+
+export const resetManageInventoryByKey = (state = INITIAL_STATE, { data }) => {
+    const { key, value } = data;
+    return { ...state, [key]: value };
 };
 
 export const HANDLERS = {
     [Types.GET_INVENTORY_TYPES_DATA_SUCCESS]: getInventoryTypesDataSuccess,
     [Types.ADD_INVENTORY_TYPE]: addInventoryType,
     [Types.UPDATE_INVENTORY_TYPE]: updateInventoryType,
+    [Types.RESET_MANAGE_INVENTORY_BY_KEY]: resetManageInventoryByKey
 };
 
 export default createReducer(INITIAL_STATE, HANDLERS);

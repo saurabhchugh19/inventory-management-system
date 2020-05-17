@@ -7,6 +7,8 @@ export default createTypes(
     ADD_INVENTORY_TYPE
 
     UPDATE_INVENTORY_TYPE
+
+    RESET_MANAGE_INVENTORY_BY_KEY
 `,
     {
         prefix: "manageinventory/"

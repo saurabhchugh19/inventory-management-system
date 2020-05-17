@@ -22,8 +22,14 @@ const updateInventoryType = (data) => ({
     data
 });
 
+const resetManageInventoryByKey = (key, value) => ({
+    type: Types.RESET_MANAGE_INVENTORY_BY_KEY,
+    data: { key, value }
+});
+
 export {
     getInventoryTypesData,
     addInventoryType,
-    updateInventoryType
+    updateInventoryType,
+    resetManageInventoryByKey
 };
