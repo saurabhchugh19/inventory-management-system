@@ -22,6 +22,11 @@ const updateInventoryType = (data) => ({
     data
 });
 
+const removeInventoryType = (data) => ({
+    type: Types.REMOVE_INVENTORY_TYPE,
+    data
+});
+
 const resetManageInventoryByKey = (key, value) => ({
     type: Types.RESET_MANAGE_INVENTORY_BY_KEY,
     data: { key, value }
@@ -31,5 +36,6 @@ export {
     getInventoryTypesData,
     addInventoryType,
     updateInventoryType,
-    resetManageInventoryByKey
+    resetManageInventoryByKey,
+    removeInventoryType
 };

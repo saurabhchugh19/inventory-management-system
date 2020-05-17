@@ -7,7 +7,8 @@ const ManageInventory = ({
     data,
     getInventoryTypesDataConnect,
     addInventoryTypeConnect,
-    updateInventoryTypeConnect
+    updateInventoryTypeConnect,
+    removeInventoryTypeConnect
 }) => {
 
     useEffect(() => {
@@ -24,6 +25,14 @@ const ManageInventory = ({
             route: getUid()
         };
         addInventoryTypeConnect(newType);
+    };
+
+    const removeType = (index) => {
+        const newList = data.filter(item => item.index !== index);
+        newList.forEach((item, index) => {
+            item.index = index;
+        });
+        removeInventoryTypeConnect(newList);
     };
 
     const onChange = (index, keyName, value) => {
@@ -47,14 +56,21 @@ const ManageInventory = ({
                     const { index, type, title, fields } = item || {};
                     return (
                         item &&
-                        <Card
-                            key={index}
-                            index={index}
-                            type={type}
-                            title={title}
-                            fields={fields}
-                            onChange={onChange}
-                        />
+                        <>
+                            <Card
+                                key={index}
+                                index={index}
+                                type={type}
+                                title={title}
+                                fields={fields}
+                                onChange={onChange}
+                            />
+                            <Button
+                                key={`remove_${item}`}
+                                ctaText={`Remove`}
+                                onClick={() => removeType(index)}
+                            />&nbsp;
+                        </>
                     );
                 })}
             </div>

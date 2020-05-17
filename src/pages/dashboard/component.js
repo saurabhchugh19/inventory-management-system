@@ -63,8 +63,10 @@ const Dashboard = ({
     const onAddType = () => {
         if (!addTypes.length) {
             setShowMessage(true);
-        } else {
+        } else if (filterType === 'All') {
             setShowTypeList(true);
+        } else {
+            addItem(filterType);
         }
     };
 
@@ -102,7 +104,7 @@ const Dashboard = ({
                     showMessage && <span>Please add at least 1 type</span>
                 }
                 {
-                    showTypeList &&
+                    showTypeList && filterType === 'All' &&
                     <ul>
                         {addTypes.map(item => {
                             return (
