@@ -4,7 +4,8 @@ import saveToLocalStorage from "../../helpers/save-to-local-storage";
 import { ITEMS_LIST } from "../../components/constants/app-constants";
 
 export const INITIAL_STATE = {
-    data: []
+    data: [],
+    filterType: 'All'
 };
 
 export const getItemsSuccess = (state = INITIAL_STATE, { data } ) => {
@@ -18,9 +19,15 @@ export const addItem = (state = INITIAL_STATE, { data }) => {
     return { ...state, data: dataList };
 };
 
+export const setByKey = (state = INITIAL_STATE, { data }) => {
+    const { key, value } = data;
+    return { ...state, [key]: value };
+};
+
 export const HANDLERS = {
     [Types.GET_ITEMS_SUCCESS]: getItemsSuccess,
-    [Types.ADD_ITEM]: addItem
+    [Types.ADD_ITEM]: addItem,
+    [Types.SET_BY_KEY]: setByKey
 
 };
 

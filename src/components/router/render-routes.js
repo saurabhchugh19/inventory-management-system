@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Dashboard from "../../pages/dashboard";
 import ManageInventory from "../../pages/manage-inventory";
-import NotFound from "../../components/not-found";
 
 const RenderRoutes = () => {
     return (
@@ -30,6 +29,6 @@ const routes = [
     {
         path: "*",
         exact: true,
-        component: NotFound
+        component: Dashboard
     }
 ];

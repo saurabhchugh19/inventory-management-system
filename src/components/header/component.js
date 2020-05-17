@@ -10,6 +10,7 @@ const Header = ({
     inventoryData,
     getInventoryTypesDataConnect,
     resetManageInventoryByKeyConnect,
+    setByKeyConnect,
     history
 }) => {
 
@@ -31,7 +32,8 @@ const Header = ({
 
     const onInventoryTypeClick = (e, item) => {
         if (item === 'All') {
-            saveToLocalStorage(SELECTED_INVENTORY, 'ALL');
+            saveToLocalStorage(SELECTED_INVENTORY, 'All');
+            setByKeyConnect('filterType', 'All');
             history.push('/');
         }
         if (item === 'Manage') {
@@ -39,6 +41,7 @@ const Header = ({
         }
         if (item && item.type && item.type.trim() && item.route) {
             saveToLocalStorage(SELECTED_INVENTORY, item.type.trim());
+            setByKeyConnect('filterType', item.type.trim());
             history.push(item.route);
         }
     };

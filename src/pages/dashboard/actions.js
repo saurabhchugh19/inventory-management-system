@@ -17,7 +17,13 @@ const addItem = (data) => ({
     data
 });
 
+const setByKey = (key, value) => ({
+    type: Types.SET_BY_KEY,
+    data: { key, value }
+});
+
 export {
     getItems,
-    addItem
+    addItem,
+    setByKey
 };

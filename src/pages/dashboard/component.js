@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../components/shared/button";
 import ItemCard from "../../components/item-card";
+import getFromLocalStorage from "../../helpers/get-from-local-storage";
+import saveToLocalStorage from "../../helpers/save-to-local-storage";
+import { SELECTED_INVENTORY } from "../../components/constants/app-constants";
+// import NotFound from "../../components/not-found";
 
 const Dashboard = ({
     data,
+    filterType,
     inventoryData,
     getItemsConnect,
-    addItemConnect
+    addItemConnect,
+    setByKeyConnect
 }) => {
 
     const [addTypes, setAddTypes] = useState([]);
@@ -17,6 +23,21 @@ const Dashboard = ({
         getItemsConnect();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        const savedFilter = getFromLocalStorage(SELECTED_INVENTORY);
+        if (savedFilter) {
+            setByKeyConnect('filterType', savedFilter);
+        } else {
+            setByKeyConnect('filterType', 'All');
+            saveToLocalStorage(SELECTED_INVENTORY, 'All');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (filterType !== 'All') {}
+    }, [filterType]);
 
     useEffect(() => {
         const uniqueTypes = [];
@@ -92,7 +113,7 @@ const Dashboard = ({
                 {data.map(item => {
                     const { index, type, fields } = item || {};
                     return (
-                        item &&
+                        item && (filterType === 'All' || (filterType !== 'All' && type === filterType)) &&
                         <ItemCard
                             key={index}
                             index={index}
