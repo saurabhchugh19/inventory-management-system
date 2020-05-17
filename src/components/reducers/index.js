@@ -1,9 +1,8 @@
-// import { resettableReducer } from 'reduxsauce';
 import { combineReducers } from 'redux';
-// import appointmentsReducer from "../../pages/appointment/reducers";
-// listen for the action type of 'RESET', you can change this.
-// const resettable = resettableReducer('RESET')
+import headerReducer from "../header/reducers";
+import manageInventoryReducer from "../../pages/manage-inventory/reducers";
 
 export default combineReducers({
-    // appointments: appointmentsReducer
+    header: headerReducer,
+    manageInventory: manageInventoryReducer
 });
