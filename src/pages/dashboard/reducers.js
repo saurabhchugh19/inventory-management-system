@@ -1,16 +1,26 @@
 import { createReducer } from "reduxsauce";
 import Types from "./types";
+import saveToLocalStorage from "../../helpers/save-to-local-storage";
+import { ITEMS_LIST } from "../../components/constants/app-constants";
 
 export const INITIAL_STATE = {
-    quack: null
+    data: []
 };
 
-export const quack = (state = INITIAL_STATE) => {
-    return { ...state, isLoading: true};
+export const getItemsSuccess = (state = INITIAL_STATE, { data } ) => {
+    const dataList = data && data.length ? data : state.data;
+    return { ...state, data: dataList };
+};
+
+export const addItem = (state = INITIAL_STATE, { data }) => {
+    const dataList = state.data.concat(data);
+    saveToLocalStorage(ITEMS_LIST, JSON.stringify(dataList));
+    return { ...state, data: dataList };
 };
 
 export const HANDLERS = {
-    [Types.QUACK]: quack
+    [Types.GET_ITEMS_SUCCESS]: getItemsSuccess,
+    [Types.ADD_ITEM]: addItem
 
 };
 
