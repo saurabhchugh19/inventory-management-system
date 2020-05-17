@@ -6,7 +6,7 @@ const RenderRoutes = () => {
     return (
         <main>
             <Switch>
-                {routes.map((route, index) => <Route key={route.component} {...route} />)}
+                {routes.map(route => <Route key={route.component} {...route} />)}
             </Switch>
         </main>
     );
