@@ -19,13 +19,13 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 export const store = createStore(rootReducer, enhancer);
 
 const App = () => {
-  return (
-      <Provider store={store}>
-          <Router>
-              <RenderRoutes />
-          </Router>
-      </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Router>
+                <RenderRoutes />
+            </Router>
+        </Provider>
+    );
 };
 
 export default App;
